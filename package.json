@@ -1,23 +1,33 @@
 {
   "name": "awarely-server",
   "version": "0.1.0",
-  "private": true,
+  "main": "main.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "concurrently \"npm run dev:next\" \"npm run dev:electron\"",
+    "dev:next": "next dev",
+    "dev:electron": "wait-on http://localhost:3000 && electron .",
+    "build": "next build && next export",
+    "start": "electron ."
   },
   "dependencies": {
+    "active-win": "^8.2.1",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.553.0",
+    "next": "16.0.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "next": "16.0.1"
+    "systeminformation": "^5.27.11"
   },
   "devDependencies": {
-    "babel-plugin-react-compiler": "1.0.0",
     "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "autoprefixer": "^10.4.22",
+    "babel-plugin-react-compiler": "1.0.0",
+    "concurrently": "^9.2.1",
+    "electron": "^39.1.2",
     "eslint": "^9",
-    "eslint-config-next": "16.0.1"
+    "eslint-config-next": "16.0.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "wait-on": "^9.0.3"
   }
 }
